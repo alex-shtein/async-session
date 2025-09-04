@@ -3,7 +3,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.routing import APIRouter
 
-from api.handlers import user_router
+from api.login_handlers import login_router
+from api.user_handlers import user_router
 
 # Создание экземпляра FastAPI приложения
 app = FastAPI(title="space")
@@ -13,6 +14,7 @@ main_api_router = APIRouter()
 
 # Подключение пользовательского роутера к главному
 main_api_router.include_router(user_router, prefix="/user", tags=["user"])
+main_api_router.include_router(login_router, prefix="/login", tags=["user"])
 
 # Подключение главного роутера к приложению
 app.include_router(main_api_router)

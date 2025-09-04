@@ -35,6 +35,10 @@ target_metadata = Base.metadata
 ```bash
 alembic revision --autogenerate -m "running migrations"
 ```
+или можно сбросить всё и начать с чистого листа:
+```bash
+alembic downgrade base
+```
 
 2. Примените миграции:
 ```bash
