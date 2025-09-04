@@ -33,16 +33,16 @@ target_metadata = Base.metadata
 
 1. Создайте автоматическую миграцию:
 ```bash
-alembic revision --autogenerate -m "running migrations"
+alembic -c /Путь/к/alembic.ini revision --autogenerate -m "running migrations"
 ```
 или можно сбросить всё и начать с чистого листа:
 ```bash
-alembic downgrade base
+alembic -c /Путь/к/alembic.ini downgrade base
 ```
 
 2. Примените миграции:
 ```bash
-alembic upgrade heads
+alembic -c /Путь/к/alembic.ini upgrade heads
 ```
 
 ## Настройка pre-commit
