@@ -28,7 +28,6 @@ target_metadata = Base.metadata
 
 
 Cоздаём конфиги `pre-commit-config.yaml` u `setup.cfg`
-• Устанавливаем `pre-commit`;
-• Пишем `pre-commit install`;
-• Далее `pre-commit run --all-files`;
-• PROFIT.
+- Устанавливаем pre-commit: `pip3 install pre-commit`;
+- Пишем `pre-commit install`;
+- Далее `pre-commit run --all-files`.
