@@ -1,33 +1,61 @@
-Для накатывания миграций, если файла alembic.ini ещё нет, нужно запустить в терминале команду:
+# Миграции с Alembic
+
+## Установка и настройка
+
+1. Установите Alembic:
+```bash
+pip install alembic
 ```
+
+2. Инициализируйте миграции (если файл `alembic.ini` еще не создан):
+```bash
 alembic init migrations
 ```
 
-После этого будет создана папка с миграциями и конфигурационный файл для алембика.
+## Конфигурация
 
-- B alembic.ini нужно задать адрес базы данных, в которую будем катать миграции:
-```
+1. Настройте подключение к базе данных в `alembic.ini`:
+```ini
 sqlalchemy.url = postgresql://postgres:postgres@0.0.0.0:5432/postgres
 ```
 
-- Дальше идём в папку с миграциями и открываем env.ру, там вносим изменения в блок, где написано:
-```
-from myapp import mymodel -> from db.models import Base
-```
+2. В файле `migrations/env.py` внесите изменения:
+```python
+# Замените импорт
+from myapp import mymodel  # Было
+from db.models import Base  # Стало
 
-- Раскоментируем строку ниже:
-```
+# Раскомментируйте строку
 target_metadata = Base.metadata
 ```
 
-- Дальше вводим: ```alembic revision --autogenerate -m "runnnig migrations"```
-- Далее: ```alembic upgrade heads```
+## Создание и применение миграций
 
+1. Создайте автоматическую миграцию:
+```bash
+alembic revision --autogenerate -m "running migrations"
+```
 
+2. Примените миграции:
+```bash
+alembic upgrade heads
+```
 
+## Настройка pre-commit
 
+1. Установите pre-commit:
+```bash
+pip install pre-commit
+```
 
-Cоздаём конфиги `pre-commit-config.yaml` u `setup.cfg`
-- Устанавливаем pre-commit: `pip3 install pre-commit`;
-- Пишем `pre-commit install`;
-- Далее `pre-commit run --all-files`.
+2. Создайте файл `.pre-commit-config.yaml` и `setup.cfg`
+
+3. Установите pre-commit хуки:
+```bash
+pre-commit install
+```
+
+4. Запустите проверку для всех файлов:
+```bash
+pre-commit run --all-files
+```
