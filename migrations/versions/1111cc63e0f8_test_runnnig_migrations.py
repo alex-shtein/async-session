@@ -5,15 +5,16 @@ Revises: 210dd6b319cd
 Create Date: 2025-09-03 16:15:40.442970
 
 """
-from typing import Sequence, Union
+from typing import Sequence
+from typing import Union
 
-from alembic import op
 import sqlalchemy as sa
+from alembic import op
 
 
 # revision identifiers, used by Alembic.
-revision: str = '1111cc63e0f8'
-down_revision: Union[str, Sequence[str], None] = '210dd6b319cd'
+revision: str = "1111cc63e0f8"
+down_revision: Union[str, Sequence[str], None] = "210dd6b319cd"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 

@@ -5,15 +5,16 @@ Revises: 797af8ae085e
 Create Date: 2025-09-02 22:22:14.350897
 
 """
-from typing import Sequence, Union
+from typing import Sequence
+from typing import Union
 
-from alembic import op
 import sqlalchemy as sa
+from alembic import op
 
 
 # revision identifiers, used by Alembic.
-revision: str = '8c3563387de8'
-down_revision: Union[str, Sequence[str], None] = '797af8ae085e'
+revision: str = "8c3563387de8"
+down_revision: Union[str, Sequence[str], None] = "797af8ae085e"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 

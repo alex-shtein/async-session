@@ -5,15 +5,16 @@ Revises: 80ce43c5c01f
 Create Date: 2025-09-03 16:09:44.401211
 
 """
-from typing import Sequence, Union
+from typing import Sequence
+from typing import Union
 
-from alembic import op
 import sqlalchemy as sa
+from alembic import op
 
 
 # revision identifiers, used by Alembic.
-revision: str = '60331f77c7d4'
-down_revision: Union[str, Sequence[str], None] = '80ce43c5c01f'
+revision: str = "60331f77c7d4"
+down_revision: Union[str, Sequence[str], None] = "80ce43c5c01f"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 

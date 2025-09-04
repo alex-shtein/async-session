@@ -1,16 +1,19 @@
 # tests/conftest.py
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
-from httpx import ASGITransport, AsyncClient
-from sqlalchemy.orm import sessionmaker
+import os
 from typing import AsyncGenerator
-from db.session import get_db
-from main import app
 
-import pytest_asyncio
-import settings
 import asyncpg
 import pytest
-import os
+import pytest_asyncio
+from httpx import ASGITransport
+from httpx import AsyncClient
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.orm import sessionmaker
+
+import settings
+from db.session import get_db
+from main import app
 
 
 CLEAN_TABLES = [
@@ -99,7 +102,7 @@ async def create_user_in_db(asyncpg_pool):
             return await connection.fetchrow(
                 """
                 INSERT INTO
-                    users(id, first_name, last_name, email, is_active) 
+                    users(id, first_name, last_name, email, is_active)
                 VALUES
                     ($1, $2, $3, $4, $5)
                 RETURNING

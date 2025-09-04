@@ -5,15 +5,16 @@ Revises: c2100d02bb68
 Create Date: 2025-08-30 17:37:26.538706
 
 """
-from typing import Sequence, Union
+from typing import Sequence
+from typing import Union
 
-from alembic import op
 import sqlalchemy as sa
+from alembic import op
 
 
 # revision identifiers, used by Alembic.
-revision: str = '5ba3cf038de6'
-down_revision: Union[str, Sequence[str], None] = 'c2100d02bb68'
+revision: str = "5ba3cf038de6"
+down_revision: Union[str, Sequence[str], None] = "c2100d02bb68"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 

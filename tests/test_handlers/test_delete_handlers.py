@@ -35,7 +35,7 @@ async def test_delete_user_not_found(client):
 
 
 async def test_delete_user_user_id_validation_error(client):
-    resp = await client.delete(f"/user/?user_id=123")
+    resp = await client.delete("/user/?user_id=123")
 
     assert resp.status_code == 422
     assert resp.json() == {

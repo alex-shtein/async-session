@@ -1,8 +1,11 @@
 # db/models.py
-from sqlalchemy import Column, Boolean, String
+import uuid
+
+from sqlalchemy import Boolean
+from sqlalchemy import Column
+from sqlalchemy import String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import declarative_base
-import uuid
 
 Base = declarative_base()
 

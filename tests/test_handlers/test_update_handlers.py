@@ -1,8 +1,8 @@
 # tests/test_handlers/test_update_handlers.py
+import json
 from uuid import uuid4
 
 import pytest
-import json
 
 
 async def test_update_user(client, create_user_in_db, get_user_from_db):
@@ -120,7 +120,7 @@ async def test_update_user_validation_error(
 
     await create_user_in_db(**user_data)
     resp = await client.patch(
-        f"/user/?user_id={user_data["id"]}", data=json.dumps(user_data_updated)
+        f"/user/?user_id={user_data['id']}", data=json.dumps(user_data_updated)
     )
 
     assert resp.status_code == expected_status_code
@@ -136,7 +136,7 @@ async def test_update_user_id_validation_error(client):
         "last_name": "test",
         "email": "test@test.com",
     }
-    resp = await client.patch(f"/user/?user_id=123", data=json.dumps(user_data_updated))
+    resp = await client.patch("/user/?user_id=123", data=json.dumps(user_data_updated))
 
     assert resp.status_code == 422
 

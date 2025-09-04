@@ -1,9 +1,12 @@
 # api/schemas.py
-import uuid
 import re
-from fastapi import HTTPException
-from pydantic import BaseModel, EmailStr, validator
+import uuid
 from typing import Optional
+
+from fastapi import HTTPException
+from pydantic import BaseModel
+from pydantic import EmailStr
+from pydantic import validator
 
 LETTER_MATCH_PATTERN = re.compile(r"^[а-яА-Яяa-zA-Z\-]+$")
 

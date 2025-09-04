@@ -1,20 +1,21 @@
 # api/handlers.py
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.ext.asyncio import AsyncSession
+from logging import getLogger
+from typing import Optional
+from uuid import UUID
+
+from fastapi import APIRouter
+from fastapi import Depends
+from fastapi import HTTPException
 from sqlalchemy.exc import IntegrityError
-from api.schemas import (
-    UserCreateRequest,
-    UserResponse,
-    UserDeleteResponse,
-    UserUpdateResponse,
-    UserUpdateRequest,
-)
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from api.schemas import UserCreateRequest
+from api.schemas import UserDeleteResponse
+from api.schemas import UserResponse
+from api.schemas import UserUpdateRequest
+from api.schemas import UserUpdateResponse
 from db.repositories import UserRepository
 from db.session import get_db
-from uuid import UUID
-from typing import Optional
-
-from logging import getLogger
 
 logger = getLogger(__name__)
 

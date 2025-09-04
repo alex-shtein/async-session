@@ -35,7 +35,7 @@ async def test_get_user_id_validation_error(client, create_user_in_db):
     }
 
     await create_user_in_db(**user_data)
-    resp = await client.get(f"/user/?user_id=123")
+    resp = await client.get("/user/?user_id=123")
 
     assert resp.status_code == 422
 
@@ -67,7 +67,7 @@ async def test_get_user_not_found(client, create_user_in_db):
     }
 
     await create_user_in_db(**user_data)
-    
+
     temp_user_id = uuid4()
     resp = await client.get(f"/user/?user_id={temp_user_id}")
 

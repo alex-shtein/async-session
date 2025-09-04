@@ -5,15 +5,16 @@ Revises: 3089c0c4c55f
 Create Date: 2025-09-03 16:07:52.216254
 
 """
-from typing import Sequence, Union
+from typing import Sequence
+from typing import Union
 
-from alembic import op
 import sqlalchemy as sa
+from alembic import op
 
 
 # revision identifiers, used by Alembic.
-revision: str = '92307e3cd37e'
-down_revision: Union[str, Sequence[str], None] = '3089c0c4c55f'
+revision: str = "92307e3cd37e"
+down_revision: Union[str, Sequence[str], None] = "3089c0c4c55f"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
