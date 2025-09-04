@@ -34,6 +34,7 @@ class UserCreateRequest(BaseSchema):
     first_name: str
     last_name: str
     email: EmailStr
+    password: str
 
     @validator("first_name")
     def validate_first_name(cls, value):
@@ -48,6 +49,14 @@ class UserCreateRequest(BaseSchema):
         if not LETTER_MATCH_PATTERN.match(value):
             raise HTTPException(
                 status_code=422, detail="Last name should contain only letters"
+            )
+        return value
+
+    @validator("password")
+    def validate_password(cls, value):
+        if len(value) < 8:
+            raise HTTPException(
+                status_code=422, detail="Password must have at least 8 letters"
             )
         return value
 
@@ -96,3 +105,8 @@ class UserUpdateRequest(BaseSchema):
                     status_code=422, detail="Last name must have at least 2 letters"
                 )
         return value
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str

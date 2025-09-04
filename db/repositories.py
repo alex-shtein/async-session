@@ -16,9 +16,16 @@ class UserRepository:
     def __init__(self, db_session: AsyncSession):
         self.db_session = db_session
 
-    async def create(self, first_name: str, last_name: str, email: str) -> User:
+    async def create(
+        self, first_name: str, last_name: str, email: str, hashed_password: str
+    ) -> User:
         """Создает нового пользователя."""
-        user = User(first_name=first_name, last_name=last_name, email=email)
+        user = User(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            hashed_password=hashed_password,
+        )
         self.db_session.add(user)
         await self.db_session.flush()
         return user
@@ -39,6 +46,13 @@ class UserRepository:
     async def get_by_id(self, user_id: UUID) -> Optional[User]:
         """Получает пользователя по ID."""
         query = select(User).where(and_(User.id == user_id, User.is_active == True))
+        cursor = await self.db_session.execute(query)
+        result = cursor.fetchone()
+        return result[0] if result else None
+
+    async def get_by_email(self, email: str) -> Optional[User]:
+        """Получает пользователя по ID."""
+        query = select(User).where(and_(User.email == email, User.is_active == True))
         cursor = await self.db_session.execute(query)
         result = cursor.fetchone()
         return result[0] if result else None

@@ -16,6 +16,7 @@ from api.schemas import UserUpdateRequest
 from api.schemas import UserUpdateResponse
 from db.repositories import UserRepository
 from db.session import get_db
+from utils.hasher import Hasher
 
 logger = getLogger(__name__)
 
@@ -33,6 +34,7 @@ async def _create_user(
                 first_name=body.first_name,
                 last_name=body.last_name,
                 email=body.email,
+                hashed_password=Hasher.get_password_hash(body.password),
             )
 
             return UserResponse(
