@@ -15,7 +15,7 @@ sqlalchemy.url = postgresql://postgres:postgres@0.0.0.0:5432/postgres
 from myapp import mymodel -> from db.models import Base
 ```
 
-- Раскоментируем строку ниже
+- Раскоментируем строку ниже:
 ```
 target_metadata = Base.metadata
 ```
