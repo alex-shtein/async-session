@@ -13,8 +13,8 @@ app = FastAPI(title="space")
 main_api_router = APIRouter()
 
 # Подключение пользовательского роутера к главному
+main_api_router.include_router(login_router, prefix="/login", tags=["login"])
 main_api_router.include_router(user_router, prefix="/user", tags=["user"])
-main_api_router.include_router(login_router, prefix="/login", tags=["user"])
 
 # Подключение главного роутера к приложению
 app.include_router(main_api_router)
