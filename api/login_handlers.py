@@ -9,7 +9,7 @@ from fastapi.security import OAuth2PasswordBearer
 from fastapi.security import OAuth2PasswordRequestForm
 from jose import jwt
 from jose import JWTError
-from schemas import Token
+from api.schemas import Token
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from db.models import User
